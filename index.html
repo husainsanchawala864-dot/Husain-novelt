@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HUSAIN NOVELTY - Online Store</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f7f3ff;
+  color: #222;
+}
+
+header {
+  background: linear-gradient(135deg, #6d28d9, #db2777, #f97316);
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+}
+
+.logo {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+}
+
+h1 {
+  margin: 10px 0;
+  font-size: 36px;
+}
+
+header p {
+  margin: 7px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px 15px;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.feature {
+  background: white;
+  padding: 18px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 15px #0002;
+}
+
+.feature b {
+  display: block;
+  margin: 7px 0;
+}
+
+h2 {
+  color: #5b21b6;
+  margin-top: 30px;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.categories button {
+  border: none;
+  background: white;
+  color: #5b21b6;
+  padding: 10px 17px;
+  border-radius: 25px;
+  font-weight: bold;
+  box-shadow: 0 3px 10px #0002;
+}
+
+.categories button.active {
+  background: linear-gradient(90deg, #7c3aed, #ec4899);
+  color: white;
+}
+
+.search {
+  width: 100%;
+  padding: 15px;
+  margin: 18px 0;
+  border: 2px solid #ddd6fe;
+  border-radius: 14px;
+  font-size: 16px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.product {
+  background: white;
+  padding: 15px;
+  border-radius: 16px;
+  box-shadow: 0 5px 18px #0002;
+}
+
+.product img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.product h3 {
+  color: #5b21b6;
+  margin-bottom: 5px;
+}
+
+.description {
+  color: #666;
+  font-size: 14px;
+  min-height: 45px;
+}
+
+.price {
+  color: #16a34a;
+  font-size: 23px;
+  font-weight: bold;
+}
+
+button {
+  cursor: pointer;
+}
+
+.btn {
+  border: none;
+  padding: 11px 15px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.add {
+  background: #6d28d9;
+  color: white;
+}
+
+.buy {
+  background: #f59e0b;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.whatsapp {
+  display: inline-block;
+  background: #22c55e;
+  color: white;
+  padding: 13px 20px;
+  border-radius: 11px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.feedback {
+  background: white;
+  margin-top: 30px;
+  padding: 25px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 5px 18px #0002;
+}
+
+.stars a {
+  text-decoration: none;
+  font-size: 32px;
+}
+
+footer {
+  margin-top: 30px;
+  padding: 30px 15px;
+  text-align: center;
+  color: white;
+  background: linear-gradient(135deg, #6d28d9, #db2777, #f97316);
+}
+
+.float-whatsapp {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  background: #22c55e;
+  color: white;
+  padding: 14px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 5px 20px #0004;
+}
+
+/* CART */
+
+#cart {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #0008;
+  z-index: 100;
+  padding: 15px;
+}
+
+.cart-box {
+  max-width: 520px;
+  margin: 30px auto;
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.close {
+  float: right;
+  border: none;
+  background: none;
+  font-size: 25px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px) {
+
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width:520px) {
+
+  h1 {
+    font-size: 29px;
+  }
+
+  .products {
+    grid-template-columns: 1fr;
+  }
+
+  .product img {
+    height: 230px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<img
+class="logo"
+src="https://i.ibb.co/39Z1Rykk/IMG-20260709-WA6090.jpg"
+alt="HUSAIN NOVELTY">
+
+<h1>HUSAIN NOVELTY</h1>
+
+<p>Useful Products For Every Home</p>
+
+<p>
+Ladies Bags • Detergents • Envelopes • Household Items
+</p>
+
+<a
+class="whatsapp"
+target="_blank"
+href="https://wa.me/918291572110?text=Hello%20Husain%20Novelty%2C%20I%20want%20to%20see%20your%20products.">
+
+💬 WhatsApp Us
+
+</a>
+
+</header>
+
+
+<div class="container">
+
+<div class="features">
+
+<div class="feature">
+🛍️
+<b>Many Products</b>
+<small>Useful daily items</small>
+</div>
+
+<div class="feature">
+💬
+<b>Easy Ordering</b>
+<small>Order on WhatsApp</small>
+</div>
+
+<div class="feature">
+🚚
+<b>Delivery</b>
+<small>Ask availability</small>
+</div>
+
+<div class="feature">
+⭐
+<b>Feedback</b>
+<small>Rate your experience</small>
+</div>
+
+</div>
+
+
+<h2>🛍️ Shop Products</h2>
+
+
+<div class="categories">
+
+<button class="active" onclick="setCategory('all')">
+All
+</button>
+
+<button onclick="setCategory('kitchen')">
+Kitchen
+</button>
+
+<button onclick="setCategory('storage')">
+Storage
+</button>
+
+<button onclick="setCategory('accessories')">
+Accessories
+</button>
+
+<button onclick="setCategory('household')">
+Household
+</button>
+
+<button onclick="setCategory('outdoor')">
+Outdoor
+</button>
+
+</div>
+
+
+<input
+id="search"
+class="search"
+type="search"
+placeholder="🔍 Search Product..."
+oninput="showProducts()">
+
+
+<div id="products" class="products"></div>
+
+
+<div class="feedback">
+
+<h2>⭐ Customer Feedback</h2>
+
+<p>Select your rating:</p>
+
+<div class="stars">
+
+<a target="_blank"
+href="https://wa.me/918291572110?text=Hello%20Husain%20Novelty%2C%20My%20rating%20is%201%20star">
+⭐
+</a>
+
+<a target="_blank"
+href="https://wa.me/918291572110?text=Hello%20Husain%20Novelty%2C%20My%20rating%20is%202%20stars">
+⭐
+</a>
+
+<a target="_blank"
+href="https://wa.me/918291572110?text=Hello%20Husain%20Novelty%2C%20My%20rating%20is%203%20stars">
+⭐
+</a>
+
+<a target="_blank"
+href="https://wa.me/918291572110?text=Hello%20Husain%20Novelty%2C%20My%20rating%20is%204%20stars">
+⭐
+</a>
+
+<a target="_blank"
+href="https://wa.me/918291572110?text=Hello%20Husain%20Novelty%2C%20My%20rating%20is%205%20stars">
+⭐
+</a>
+
+</div>
+
+<br>
+
+<a
+class="whatsapp"
+target="_blank"
+href="https://wa.me/918291572110?text=Hello%20Husain%20Novelty%2C%20My%20Feedback%20is%3A">
+
+📱 Send Feedback
+
+</a>
+
+</div>
+
+</div>
+
+
+<footer>
+
+<h2 style="color:white;">
+HUSAIN NOVELTY
+</h2>
+
+<p>
+Ladies Bags • Detergents • Envelopes • Household Items
+</p>
+
+<p>
+📞 8291572110 / 9833509953
+</p>
+
+<p>
+Thank you for shopping with us ❤️
+</p>
+
+</footer>
+
+
+<a
+class="float-whatsapp"
+target="_blank"
+href="https://wa.me/918291572110?text=Hello%20Husain%20Novelty%2C%20I%20want%20to%20place%20an%20order.">
+
+💬 WhatsApp
+
+</a>
+
+
+<!-- CART -->
+
+<div id="cart">
+
+<div class="cart-box">
+
+<button class="close" onclick="closeCart()">
+✕
+</button>
+
+<h2>🛒 Your Cart</h2>
+
+<div id="cartItems"></div>
+
+<hr>
+
+<h3>
+Total: Rs <span id="cartTotal">0</span>
+</h3>
+
+<button
+class="btn add"
+style="width:100%;"
+onclick="checkout()">
+
+📱 ORDER ON WHATSAPP
+
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+const WHATSAPP = "918291572110";
+
+let currentCategory = "all";
+
+let cart = [];
+
+
+const products = [
+
+{
+name:"6pcs Set Fridge Mat",
+desc:"Keep refrigerator shelves clean | BPA Free",
+price:150,
+img:"https://i.ibb.co/k21xWSdY/IMG-20260709-WA0063.jpg",
+category:"kitchen"
+},
+
+{
+name:"Food Grade Refillable Juice Squeeze Bottle",
+desc:"4pcs Pack | For Salad, Sauce",
+price:200,
+img:"https://i.ibb.co/279N0Bc4/IMG-20260709-WA0028.jpg",
+category:"kitchen"
+},
+
+{
+name:"Stainless Steel Serving Platter",
+desc:"3 Compartment | Round Appetizer Tray",
+price:90,
+img:"https://i.ibb.co/N2Ff72kD/platter.jpg",
+category:"kitchen"
+},
+
+{
+name:"Household Mushroom Stainless Steel Spatula",
+desc:"Wooden Handle Comfortable Grip",
+price:100,
+img:"https://i.ibb.co/VYFCZrrc/IMG-20260711-WA0000.jpg",
+category:"kitchen"
+},
+
+{
+name:"Nima Electric Grinder",
+desc:"High Quality Electric Grinder",
+price:290,
+img:"https://i.ibb.co/cKwfRS95/IMG-20260710-WA0010.jpg",
+category:"storage"
+},
+
+{
+name:"200ml Gradient Pocket Cup",
+desc:"316 Stainless Steel Insulated Cup",
+price:390,
+img:"https://i.ibb.co/bMsn43Jc/IMG-20260711-WA0001.jpg",
+category:"storage"
+},
+
+{
+name:"Modern Design Plastic Storage Box",
+desc:"Rectangle with Lid | Organizer",
+price:240,
+img:"https://i.ibb.co/nsqFh3Bn/IMG-20260709-WA0027.jpg",
+category:"storage"
+},
+
+{
+name:"Stainless Steel Food Storage Container",
+desc:"Leakproof, Stackable",
+price:140,
+img:"https://i.ibb.co/5W6KWvDM/container.jpg",
+category:"storage"
+},
+
+{
+name:"SET OF 12 PEN",
+desc:"Premium Quality Writing Pens",
+price:150,
+img:"https://i.ibb.co/Q7LCcWGM/IMG-20260710-WA0009.jpg",
+category:"accessories"
+},
+
+{
+name:"Premium Party Wear Clutches",
+desc:"Elegant Gold & Silver | 21*12*5cm",
+price:1090,
+img:"https://i.ibb.co/j9m1xTn8/clutch.jpg",
+category:"accessories"
+},
+
+{
+name:"50pcs Colour Absorption Sheets",
+desc:"Laundry Anti-Dyeing Cloth Protector",
+price:80,
+img:"https://i.ibb.co/XfpYQ273/IMG-20260710-WA0008.jpg",
+category:"accessories"
+},
+
+{
+name:"750ml Colour Shaded Stainless Steel Water Bottle",
+desc:"Premium stainless steel bottle with gradient colors. Leak proof with carry strap.",
+price:260,
+img:"https://i.ibb.co/Zp1ymYTL/IMG-20260713-WA0018.jpg",
+category:"storage"
+},
+
+{
+name:"Visiting Card Holder With Date Changer",
+desc:"Never Ending Date Changer | Premium Quality",
+price:150,
+img:"https://i.ibb.co/fGndmFFM/IMG-20260713-WA0017.jpg",
+category:"accessories"
+},
+
+{
+name:"Reusable Kitchen Cleaning Cloth Set",
+desc:"10Pc Set | Multi-Purpose Wipes",
+price:140,
+img:"https://i.ibb.co/6RkBD0BW/IMG-20260713-WA0016.jpg",
+category:"kitchen"
+},
+
+{
+name:"A4 File Folder Clipboard",
+desc:"Writing Pad Memo Clip Board | Organizer",
+price:160,
+img:"https://i.ibb.co/1fNG1mG6/IMG-20260713-WA0015.jpg",
+category:"accessories"
+},
+
+{
+name:"THREE PIECE KNIFE SET",
+desc:"Premium Stainless Steel Kitchen Knife Set",
+price:200,
+img:"https://i.ibb.co/QvRS9YXD/IMG-20260713-WA0014.jpg",
+category:"kitchen"
+},
+
+{
+name:"GARBAGE BAG ROLL",
+desc:"Heavy Duty Garbage Bag Roll",
+price:140,
+img:"https://i.ibb.co/TB6vL4PH/IMG-20260713-WA0013.jpg",
+category:"storage"
+},
+
+{
+name:"Cute Flower Glass Water Bottle 350ml",
+desc:"Frosted Aesthetic Bottle with Lid & Daisy Keychain",
+price:100,
+img:"https://i.ibb.co/dJtskMnp/IMG-20260723-WA0014.jpg",
+category:"storage"
+},
+
+{
+name:"Silicone Iron Pad",
+desc:"Heat Resistant Ironing Board Mat",
+price:90,
+img:"https://i.ibb.co/v6PZdvJZ/IMG-20260723-WA0016.jpg",
+category:"household"
+},
+
+{
+name:"Glass Tumbler with Straw 435ml",
+desc:"Glass Cup with Silicone Straw, Lid & Leather Sleeve",
+price:90,
+img:"https://i.ibb.co/HDm2k97c/IMG-20260723-WA0015.jpg",
+category:"storage"
+},
+
+{
+name:"Disposable Shoe Covers 50 Pair",
+desc:"Waterproof Dustproof Shoe Protector",
+price:190,
+img:"https://i.ibb.co/4wmwVP32/IMG-20260723-WA0018.jpg",
+category:"outdoor"
+}
+
+];
+
+
+function showProducts() {
+
+const search =
+document.getElementById("search").value.toLowerCase();
+
+const box =
+document.getElementById("products");
+
+let list = products.filter(function(product) {
+
+const categoryOK =
+currentCategory === "all" ||
+product.category === currentCategory;
+
+const searchOK =
+product.name.toLowerCase().includes(search) ||
+product.desc.toLowerCase().includes(search);
+
+return categoryOK && searchOK;
+
+});
+
+
+if(list.length === 0) {
+
+box.innerHTML =
+"<p>No products found.</p>";
+
+return;
+
+}
+
+
+box.innerHTML = list.map(function(product) {
+
+const index =
+products.indexOf(product);
+
+return `
+
+<div class="product">
+
+<img
+src="${product.img}"
+alt="${product.name}">
+
+<h3>${product.name}</h3>
+
+<div class="description">
+${product.desc}
+</div>
+
+<p class="price">
+Rs ${product.price}
+</p>
+
+<button
+class="btn add"
+onclick="addToCart(${index})">
+
+🛒 Add to Cart
+
+</button>
+
+<button
+class="btn buy"
+onclick="buyNow(${index})">
+
+🛍️ BUY NOW
+
+</button>
+
+</div>
+
+`;
+
+}).join("");
+
+}
+
+
+function setCategory(category) {
+
+currentCategory = category;
+
+document
+.querySelectorAll(".categories button")
+.forEach(function(button) {
+
+button.classList.remove("active");
+
+});
+
+
+event.target.classList.add("active");
+
+showProducts();
+
+}
+
+
+function buyNow(index) {
+
+const product =
+products[index];
+
+const message =
+`Assalamualaikum Husain Novelty 👋
+
+Mujhe ye product chahiye:
+
+${product.name}
+
+Price: Rs ${product.price}
+
+Mera Naam:
+Mera Address:
+Phone No:
+Payment Mode: COD / Online`;
+
+window.open(
+"https://wa.me/" +
+WHATSAPP +
+"?text=" +
+encodeURIComponent(message),
+"_blank"
+);
+
+}
+
+
+function addToCart(index) {
+
+cart.push(products[index]);
+
+updateCart();
+
+openCart();
+
+}
+
+
+function updateCart() {
+
+const items =
+document.getElementById("cartItems");
+
+let total = 0;
+
+if(cart.length === 0) {
+
+items.innerHTML =
+"<p>Your cart is empty.</p>";
+
+document.getElementById("cartTotal").innerText =
+"0";
+
+return;
+
+}
+
+
+items.innerHTML =
+cart.map(function(product,index) {
+
+total += product.price;
+
+return `
+
+<div class="cart-item">
+
+<img src="${product.img}">
+
+<div style="flex:1">
+
+<b>${product.name}</b>
+
+<br>
+
+Rs ${product.price}
+
+</div>
+
+<button
+onclick="removeItem(${index})">
+
+❌
+
+</button>
+
+</div>
+
+`;
+
+}).join("");
+
+
+document.getElementById("cartTotal").innerText =
+total;
+
+}
+
+
+function removeItem(index) {
+
+cart.splice(index,1);
+
+updateCart();
+
+}
+
+
+function openCart() {
+
+document.getElementById("cart").style.display =
+"block";
+
+updateCart();
+
+}
+
+
+function closeCart() {
+
+document.getElementById("cart").style.display =
+"none";
+
+}
+
+
+function checkout() {
+
+if(cart.length === 0) {
+
+alert("Your cart is empty.");
+
+return;
+
+}
+
+
+let message =
+"Assalamualaikum Husain Novelty 👋\n\nI want to order:\n\n";
+
+let total = 0;
+
+
+cart.forEach(function(product,index) {
+
+message +=
+(index + 1) +
+". " +
+product.name +
+" - Rs " +
+product.price +
+"\n";
+
+total += product.price;
+
+});
+
+
+message +=
+"\nTotal: Rs " +
+total +
+"\n\nName:\nAddress:\nPhone No:\nPayment Mode: COD / Online";
+
+
+window.open(
+"https://wa.me/" +
+WHATSAPP +
+"?text=" +
+encodeURIComponent(message),
+"_blank"
+);
+
+}
+
+
+showProducts();
+
+</script>
+
+</body>
+</html>
